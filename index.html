@@ -20,13 +20,20 @@
             <h1 class="text-center">{{ sitename }}</h1>
             <div>
                 <div class="row">
-                    <div class="col-4 mb-3" v-for="lesson in lessons">
+                    <div class="col-3 mb-3" v-for="lesson in lessons">
                         <div class="card" >
                             <img v-bind:src="lesson.image" style="height: 200px;">
                             <div class="card-body">
                                 <h5 class="card-title" v-text="lesson.subject"></h5>
                                 <p>Location: {{lesson.location}}</p>
                                 <p>Price: {{lesson.price}}</p>
+                                <p>Number of spaces: {{lesson.availableInventory - cartCount(lesson.id)}}</p>
+                                <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-block btn-info">
+                                    Add to cart
+                                </button>
+                                <button class="btn btn-secondary btn-block disabled" v-else>
+                                    Out of stock
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -39,12 +46,30 @@
                     data: {
                         sitename: "Lessons Store",
                         lessons: lessons,
+                        cart: []
                     },
                     methods: {
-
+                        addToCart: function (lesson) {
+                            this.cart.push(lesson.id);
+                        },
+                        cartCount(id) {
+                            let count = 0;
+                            for (let i = 0; i < this.cart.length; i++) {
+                                if (this.cart[i] === id) {
+                                    count++;
+                                }
+                            }
+                            return count;
+                        },
+                        canAddToCart: function (lesson) {
+                            return lesson.availableInventory > this.cartCount(lesson.id);
+                        },
                     },
                     computed: {
-
+                        cartItemCount: function () { //the property name
+                            //its value is calculated when it is called
+                            return this.cart.length;
+                        },
                     }
                 })
         </script>

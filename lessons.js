@@ -40,7 +40,7 @@ let lessons = [
         "subject": 'English',
         "location": "Dubai",
         "price": 200,
-        "image": "img/english.jpg",
+        "image": "https://i1.wp.com/ritajms.com/wp-content/uploads/2019/11/52351011-english-british-england-language-education-concept.jpg",
         "availableInventory":5,
         "rating": 4
     },
