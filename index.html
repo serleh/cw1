@@ -13,16 +13,32 @@
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../css/fontawesome.css">
         <script src="../js/vue.js"></script>
+        <script src="lessons.js"></script>
     </head>
     <body>
         <div id="app">
             <h1 class="text-center">{{ sitename }}</h1>
+            <div>
+                <div class="row">
+                    <div class="col-4 mb-3" v-for="lesson in lessons">
+                        <div class="card" >
+                            <img v-bind:src="lesson.image" style="height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title" v-text="lesson.subject"></h5>
+                                <p>Location: {{lesson.location}}</p>
+                                <p>Price: {{lesson.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
             var lessonStore = new Vue({
                     el: "#app",
                     data: {
-                        sitename: "Lessons Store"
+                        sitename: "Lessons Store",
+                        lessons: lessons,
                     },
                     methods: {
 
