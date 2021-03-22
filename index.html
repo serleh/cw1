@@ -22,99 +22,129 @@
                 <div class="col-10">
                     <h1 class="text-center">{{ sitename }}</h1>
                 </div>
-                <div class="col-2">
-                    <button class="btn btn-success" v-on:click="showCheckout">{{cartItemCount}} Checkout</button>
-                </div>
+                <button class="btn btn-success" v-on:click="showCheckout" v-if="cartItemCount > 0">{{cartItemCount}} Checkout</button>
+                
+                <button class="btn btn-secondary disabled" disabled v-else>{{cartItemCount}} Checkout</button>
             </div>
             <!-- PRODUCTS PAGE -->
             <div>
                 <div class="row">
-                    <div class="col-3 mb-3" v-for="lesson in lessons">
-                        <div class="card">
-                            <img v-bind:src="lesson.image" style="height: 200px;">
-                            <div class="card-body">
-                                <h5 class="card-title" v-text="lesson.subject"></h5>
-                                <p>Location: {{lesson.location}}</p>
-                                <p>Price: {{lesson.price}}</p>
-                                <p>Number of spaces: {{lesson.availableInventory - cartCount(lesson.id)}}</p>
-                                <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-block btn-info">
-                                    Add to cart
-                                </button>
-                                <button class="btn btn-secondary btn-block disabled" v-else>
-                                    Out of stock
-                                </button>
+                    <div class="col-2 pl-5">
+                        <h4>Sort by:</h4>
+                        <fieldset>
+                            <label>
+                                <input type="radio" name="Sort" value="Price">Price
+                            </label><br>
+                            <label>
+                                <input type="radio" name="Sort" value="Subject">Subject
+                            </label><br>
+                            <label>
+                                <input type="radio" name="Sort" value="Location">Location
+                            </label><br>
+                            <label>
+                                <input type="radio" name="Sort" value="Availability">Availability
+                            </label><br>
+                        </fieldset>
+                        
+                        <h4 class="mt-5">Order</h4>
+                        <fieldset>
+                            <label>
+                                <input type="radio" name="Order" value="asc">Ascending
+                            </label><br>
+                            <label>
+                                <input type="radio" name="Order" value="des">Descending
+                            </label><br>
+                        </fieldset>
+                        
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-3 mb-3" v-for="lesson in lessons">
+                                <div class="card">
+                                    <img v-bind:src="lesson.image" style="height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title" v-text="lesson.subject"></h5>
+                                        <p>Location: {{lesson.location}}</p>
+                                        <p>Price: {{lesson.price}}</p>
+                                        <p>Number of spaces: {{lesson.availableInventory - cartCount(lesson.id)}}</p>
+                                        <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-block btn-info">
+                                            Add to cart
+                                        </button>
+                                        <button class="btn btn-secondary btn-block disabled" v-else>
+                                            Out of stock
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- CHECKOUT PAGE -->
-        <div v-else>
-            <div class="row mt-1">
-                <div class="col-10">
-                    <h1 class="text-center">Checkout</h1>
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-success" v-on:click="showCheckout">{{cartItemCount}} Checkout</button>
-                </div>
-            </div>
-            <form>
-                <div class="row m-5">
-                    <div class="form-group col-4">
-                        <label>First Name:</label>
-                        <input v-model="order.fullname" class="form-control border-top-0 border-left-0 border-right-0">
+                <!-- CHECKOUT PAGE -->
+                <div v-else>
+                    <div class="row mt-1">
+                        <div class="col-10">
+                            <h1 class="text-center">Checkout</h1>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-success" v-on:click="showCheckout">{{cartItemCount}} Lessons</button>
+                        </div>
                     </div>
-                    <div class="form-group col-4">
-                        <label>Phone:</label>
-                        <input v-model.number="order.phone" class="form-control border-top-0 border-left-0 border-right-0">
-                    </div>
-                    <div class="form-group col-4">
-                        <button class="btn btn-primary mt-4">Checkout</button>
-                    </div>
+                    <form>
+                        <div class="row m-5">
+                            <div class="form-group col-4">
+                                <label>First Name:</label>
+                                <input v-model="order.fullname" class="form-control border-top-0 border-left-0 border-right-0">
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Phone:</label>
+                                <input v-model.number="order.phone" class="form-control border-top-0 border-left-0 border-right-0">
+                            </div>
+                            <div class="form-group col-4">
+                                <button class="btn btn-primary mt-4">Checkout</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        <script>
-            var lessonStore = new Vue({
-                el: "#app",
-                data: {
-                    sitename: "Lessons Store",
-                    lessons: lessons,
-                    cart: [],
-                    order: {
-                            fullname: '',
-                            phone: ''
+                <script>
+                    var lessonStore = new Vue({
+                        el: "#app",
+                        data: {
+                            sitename: "Lessons Store",
+                            lessons: lessons,
+                            cart: [],
+                            order: {
+                                fullname: '',
+                                phone: ''
+                            },
+                            shop: true,
                         },
-                        shop: true,
-                },
-                methods: {
-                    addToCart: function (lesson) {
-                        this.cart.push(lesson.id);
-                    },
-                    cartCount(id) {
-                        let count = 0;
-                        for (let i = 0; i < this.cart.length; i++) {
-                            if (this.cart[i] === id) {
-                                count++;
+                        methods: {
+                            addToCart: function (lesson) {
+                                this.cart.push(lesson.id);
+                            },
+                            cartCount(id) {
+                                let count = 0;
+                                for (let i = 0; i < this.cart.length; i++) {
+                                    if (this.cart[i] === id) {
+                                        count++;
+                                    }
+                                }
+                                return count;
+                            },
+                            canAddToCart: function (lesson) {
+                                return lesson.availableInventory > this.cartCount(lesson.id);
+                            },
+                            showCheckout() {
+                                this.shop = this.shop ? false : true;
                             }
+                        },
+                        computed: {
+                            cartItemCount: function () { //the property name
+                                //its value is calculated when it is called
+                                return this.cart.length;
+                            },
                         }
-                        return count;
-                    },
-                    canAddToCart: function (lesson) {
-                        return lesson.availableInventory > this.cartCount(lesson.id);
-                    },
-                    showCheckout() {
-                            this.shop = this.shop ? false : true;
-                        }
-                },
-                computed: {
-                    cartItemCount: function () { //the property name
-                        //its value is calculated when it is called
-                        return this.cart.length;
-                    },
-                }
-            })
-        </script>
-    </body>
-    </html> 
+                    })
+                </script>
+            </body>
+            </html> 
