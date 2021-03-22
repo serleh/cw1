@@ -17,7 +17,15 @@
     </head>
     <body>
         <div id="app">
-            <h1 class="text-center">{{ sitename }}</h1>
+            <div class="row mt-1">
+                <div class="col-10">
+                    <h1 class="text-center">{{ sitename }}</h1>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-success">{{cartItemCount}} Checkout</button>
+                </div>
+            </div>
+            <!-- PRODUCTS PAGE -->
             <div>
                 <div class="row">
                     <div class="col-3 mb-3" v-for="lesson in lessons">
@@ -40,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <!-- CHECKOUT PAGE -->
         <script>
             var lessonStore = new Vue({
                     el: "#app",
