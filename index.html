@@ -35,9 +35,6 @@
                         <h4>Sort by:</h4>
                         <fieldset>
                             <label>
-                                <input type="radio" name="Sort" value="Price">Price
-                            </label><br>
-                            <label>
                                 <input v-model="sort" type="radio" name="Sort" value="price" v-on:click="sortedLessons('price', ord)">Price
                             </label><br>
                             <label>
@@ -71,7 +68,7 @@
                                         <h5 class="card-title" v-text="lesson.subject"></h5>
                                         <p>Location: {{lesson.location}}</p>
                                         <p>Price: {{lesson.price}}</p>
-                                        <p>Number of spaces: {{lesson.availableInventory - cartCount(lesson.id)}}</p>
+                                        p>Number of spaces: {{lesson.availableInventory - cartCount(lesson)}}</p>
                                         <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-block btn-info">
                                             Add to cart
                                         </button>
@@ -94,6 +91,23 @@
                             <button class="btn btn-success" v-on:click="showCheckout">{{cartItemCount}} Lessons</button>
                         </div>
                     </div>
+                    <div>
+                        <h2 class="text-center">Cart</h2>
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item" v-for="lesson in cart">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img v-bind:src="lesson.image" style="height: 25px;width: 25px;">
+                                        </div>
+                                        <div class="col-5">
+                                            <p>{{lesson.subject}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <form>
                         <div class="row m-5">
                             <div class="form-group col-4">
@@ -105,7 +119,7 @@
                                 <input v-model.number="order.phone" class="form-control border-top-0 border-left-0 border-right-0">
                             </div>
                             <div class="form-group col-4">
-                                <button class="btn btn-primary" v-if="checkoutBtn">Checkout</button>
+                                <button class="btn btn-primary" v-if="checkoutBtn" v-on:click="submitOrder">Checkout</button>
                                 
                                 <button class="btn btn-secondary" disabled v-else>Checkout</button>
                             </div>
@@ -129,7 +143,10 @@
                         },
                         methods: {
                             addToCart: function (lesson) {
-                                this.cart.push(lesson.id);
+                                this.cart.push(lesson);
+                            },
+                            removeFromCart: function (lesson){
+                                this.cart
                             },
                             cartCount(id) {
                                 let count = 0;
@@ -141,7 +158,7 @@
                                 return count;
                             },
                             canAddToCart: function (lesson) {
-                                return lesson.availableInventory > this.cartCount(lesson.id);
+                                return lesson.availableInventory > this.cartCount(lesson);
                             },
                             showCheckout() {
                                 this.shop = this.shop ? false : true;
@@ -241,6 +258,9 @@
                                     }
                                     break;
                                 }
+                            },
+                            submitOrder() {
+                                alert("Order submitted!")
                             }
                         },
                         computed: {
