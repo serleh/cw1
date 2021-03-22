@@ -8,11 +8,29 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <!-- fontawesome -->
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- local files -->
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../css/fontawesome.css">
+        <script src="../js/vue.js"></script>
     </head>
     <body>
-
+        <div id="app">
+            <h1 class="text-center">{{ sitename }}</h1>
+        </div>
         <script>
+            var lessonStore = new Vue({
+                    el: "#app",
+                    data: {
+                        sitename: "Lessons Store"
+                    },
+                    methods: {
 
+                    },
+                    computed: {
+
+                    }
+                })
         </script>
     </body>
 </html> 
