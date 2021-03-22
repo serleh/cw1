@@ -22,9 +22,11 @@
                 <div class="col-10">
                     <h1 class="text-center">{{ sitename }}</h1>
                 </div>
-                <button class="btn btn-success" v-on:click="showCheckout" v-if="cartItemCount > 0">{{cartItemCount}} Checkout</button>
-                
-                <button class="btn btn-secondary disabled" disabled v-else>{{cartItemCount}} Checkout</button>
+                <div class="col-2">
+                    <button class="btn btn-success" v-on:click="showCheckout" v-if="cartItemCount > 0">{{cartItemCount}} Checkout</button>
+
+                        <button class="btn btn-secondary disabled" disabled v-else>{{cartItemCount}} Checkout</button>
+                </div>
             </div>
             <!-- PRODUCTS PAGE -->
             <div>
@@ -49,7 +51,7 @@
                         <h4 class="mt-5">Order</h4>
                         <fieldset>
                             <label>
-                                <input type="radio" name="Order" value="asc">Ascending
+                                <input type="radio" name="Order" value="asc" checked>Ascending
                             </label><br>
                             <label>
                                 <input type="radio" name="Order" value="des">Descending
