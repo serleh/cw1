@@ -8,12 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- fontawesome -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!-- local files -->
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../css/fontawesome.css">
-    <script src="../js/vue.js"></script>
-    <script src="lessons.js"></script>
 </head>
 <body>
     <div id="app">
@@ -146,7 +140,7 @@
                                 this.cart.push(lesson);
                             },
                             removeFromCart: function (lesson){
-                                this.cart
+                                this.cart.splice(this.cart.indexOf(lesson))
                             },
                             cartCount(id) {
                                 let count = 0;
