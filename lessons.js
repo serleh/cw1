@@ -49,7 +49,7 @@ let lessons = [
         "subject": 'Medicine',
         "location": "Hendon",
         "price": 350,
-        "image": "img/law.jpg",
+        "image": "https://images.app.goo.gl/HcC4TH3yDs3TBFpr5.jpg",
         "availableInventory":5,
         "rating": 5
     },
@@ -58,7 +58,7 @@ let lessons = [
         "subject": 'History',
         "location": "Mauritius",
         "price": 170,
-        "image": "img/history.jpg",
+        "image": "https://images.app.goo.gl/d4gNhPKHPTJPJB1L6.jpg",
         "availableInventory": 5,
         "rating": 3,
     },
@@ -67,7 +67,7 @@ let lessons = [
         "subject": 'Science',
         "location": "Dubai",
         "price": 240,
-        "image": "img/science.jpg",
+        "image": "https://images.app.goo.gl/d1eFt8f9eRGmriei8.jpg",
         "availableInventory":5,
         "rating": 4
     },
@@ -76,7 +76,7 @@ let lessons = [
         "subject": 'Math',
         "location": "Hendon",
         "price": 190,
-        "image": "img/math.jpg",
+        "image": "https://images.app.goo.gl/eCDWjiGHNPZEtGZB6.jpg",
         "availableInventory":5,
         "rating": 5
     },
@@ -85,7 +85,7 @@ let lessons = [
         "subject": 'Engineering',
         "location": "Mauritius",
         "price": 200,
-        "image": "img/demo-img.svg",
+        "image": "https://images.app.goo.gl/bj9ZojLawzEgnKQq7.jpg",
         "availableInventory": 5,
         "rating": 3,
     },
@@ -94,7 +94,7 @@ let lessons = [
         "subject": 'Robotics',
         "location": "Dubai",
         "price": 300,
-        "image": "img/demo-img.svg",
+        "image": "https://images.app.goo.gl/YHt6Ry5khZE32DYy6.jpg",
         "availableInventory":5,
         "rating": 4
     },
@@ -103,7 +103,7 @@ let lessons = [
         "subject": 'Software Engineering',
         "location": "Hendon",
         "price": 260,
-        "image": "img/demo-img.svg",
+        "image": "https://images.app.goo.gl/ZxcE433YBtzofqTDA.jpg",
         "availableInventory":5,
         "rating": 5
     }
