@@ -4,7 +4,7 @@ let lessons = [
         "subject": 'IT',
         "location": "Mauritius",
         "price": 300,
-        "image": "https://www.intelligenthq.com/wp-content/uploads/2020/09/How-Tech-is-Changing-the-Way-we-Work.jpg",
+        "image": "https://www.intelligenthq.com/wp-content/uploads/2020/09/How-Tech-is-Changing-the-Way-we-Work",
         "availableInventory": 5,
         "rating": 3,
     },
