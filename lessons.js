@@ -49,7 +49,7 @@ let lessons = [
         "subject": 'Medicine',
         "location": "Hendon",
         "price": 350,
-        "image": "https://images.app.goo.gl/HcC4TH3yDs3TBFpr5.jpg",
+        "image": "https://images.app.goo.gl/HcC4TH3yDs3TBFpr5",
         "availableInventory":5,
         "rating": 5
     },
