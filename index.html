@@ -63,7 +63,7 @@
                                         <h5 class="card-title" v-text="lesson.subject"></h5>
                                         <p>Location: {{lesson.location}}</p>
                                         <p>Price: {{lesson.price}}</p>
-                                        p>Number of spaces: {{lesson.availableInventory - cartCount(lesson)}}</p>
+                                        <p>Number of spaces: {{lesson.availableInventory - cartCount(lesson)}}</p>
                                         <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-block btn-info">
                                             Add to cart
                                         </button>
