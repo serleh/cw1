@@ -49,7 +49,7 @@ let lessons = [
         "subject": 'Medicine',
         "location": "Hendon",
         "price": 350,
-        "image": "https://images.app.goo.gl/CJPvExvsqCJT5ZLH7",
+        "image":https://www.google.com/search?q=medicine+images&rlz=1C1CHBD_enNG935NG935&sxsrf=ALeKk03cZqAr492ee0w4BLzhJKgunmg4GQ:1618143335479&tbm=isch&source=iu&ictx=1&fir=Y6fq6qbK9BDalM%252C4R9sN09RqjZpTM%252C_&vet=1&usg=AI4_-kRGfur9rwM1ZjQ6LN5VnKmm02bvig&sa=X&ved=2ahUKEwiZrtPVlfbvAhXJ4IUKHX70BoQQ9QF6BAgPEAE#imgrc=Y6fq6qbK9BDalM,
         "availableInventory":5,
         "rating": 5
     },
